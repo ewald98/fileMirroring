@@ -224,44 +224,6 @@ void updateCompleted(int client_fd) {
 
 }
 
-void fileMirroring(int fd) {
-    // char *reqSync;
-    // char *finishUpdate;
-    // char reqAck[1]={0x00};
-
-
-
-    //
-    // if(reqSync[0] == 0x01)
-    // {
-    //     int c;
-    //     for (c = 0; c < 100000; c++){
-    //         int a;
-    //         for (a = 0; a < 10000; a++) {
-    //             int b = 5;
-    //             b += a;
-    //         }
-    //     }
-    //     if (stream_write(fd, reqAck, strlen(reqAck)) < 0) {
-    //         perror("send from server error");
-    //         exit(4);
-    //     }
-    // }
-
-    // if ((r = stream_read(fd, finishUpdate, strlen(finishUpdate))) < 0)
-    // {
-    //     perror("server read error");
-    //     exit(5);
-    // }
-    // if(finishUpdate[0] == 0xFF)
-    //     {
-    //         close(fd);
-    //         printf("GATA\n");
-    //     }
-        close(fd);
-}
-
-
 int main(void)
 {
     int server_fd,fd;

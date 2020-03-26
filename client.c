@@ -18,6 +18,7 @@
 
 #define CLIENT_FOLDER_PATH "/home/ewi/client/"
 #define COMPARE_FILE_PATH "/home/ewi/pad/compareFile.txt"
+#define USER_PATH "/home/ewi"
 
 char files[1000][300];
 int filesIndex;
@@ -42,7 +43,6 @@ void removeFilesLeft()
 {
 	printf("Removing files left... (%d files)\n", filesIndex);
 	int j;
-	//TODO: vezi ce faci cu randuri goale
 	char path[256];
 
 	for (int i = 0; i < filesIndex; i++)
@@ -240,7 +240,7 @@ void creatyDirectory(char *path)
 
 void firstDirectory(char *path)
 {
-    chdir("/home/ewi");
+    chdir(USER_PATH);
 
 	DIR *firstDir = opendir(path);
 	if(ENOENT == errno)
@@ -365,10 +365,8 @@ void finishUpdate(int sock) {
 
     removeFilesLeft();
     printf("Finished update, client side ^^\n");
-    // if (stream_write(sock, finishUpdate, strlen(finishUpdate)) < 0) {
-    //     perror("finish update, client side error");
-    //     exit(4);
-    //
+
+    close(sock);
 }
 
 void performUpdate(int sockfd) {
@@ -502,6 +500,7 @@ int main(void)
     initiateUpdate(sock);
     performUpdate(sock);
     finishUpdate(sock);
+
 
     return 0;
 }
